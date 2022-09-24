@@ -16,3 +16,4 @@ __pycache__/**
 nginx
 nginx/**
 *.sqlite3
+config/**
