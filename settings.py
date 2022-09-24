@@ -40,8 +40,13 @@ SHOW_USER_INFO = (get_from_env('SHOW_USER_INFO', '1') == '1')
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'helios',
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE' : get_from_env('DATABASE_ENGINE', "django.db.backends.sqlite3"),
+        'NAME' : get_from_env('DATABASE_NAME', "helios_db.sqlite3"),
+        "USER": get_from_env("DATABASE_USER", "user"),
+        "PASSWORD": get_from_env("DATABASE_PASSWORD", "password"),
+        "HOST": get_from_env("DATABASE_HOST", "localhost"),
+        "PORT": get_from_env("DATABASE_PORT", "5432"),
         'CONN_MAX_AGE': 600,
     },
 }
@@ -211,7 +216,7 @@ HELP_EMAIL_ADDRESS = get_from_env('HELP_EMAIL_ADDRESS', 'help@heliosvoting.org')
 
 AUTH_TEMPLATE_BASE = "server_ui/templates/base.html"
 HELIOS_TEMPLATE_BASE = "server_ui/templates/base.html"
-HELIOS_ADMIN_ONLY = False
+HELIOS_ADMIN_ONLY = get_from_env('HELIOS_ADMIN_ONLY', '1') == '1'
 HELIOS_VOTERS_UPLOAD = True
 HELIOS_VOTERS_EMAIL = True
 
@@ -262,6 +267,7 @@ GH_CLIENT_ID = get_from_env('GH_CLIENT_ID', '')
 GH_CLIENT_SECRET = get_from_env('GH_CLIENT_SECRET', '')
 
 # email server
+EMAIL_BACKEND = get_from_env('EMAIL_USE_AWS', EMAIL_BACKEND)
 EMAIL_HOST = get_from_env('EMAIL_HOST', 'localhost')
 EMAIL_PORT = int(get_from_env('EMAIL_PORT', "2525"))
 EMAIL_HOST_USER = get_from_env('EMAIL_HOST_USER', '')

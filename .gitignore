@@ -8,3 +8,11 @@ celerybeat-*
 env.sh
 .cache
 .idea/
+__pycache__
+__pycache__/**
+
+## 
+.env.dev
+nginx
+nginx/**
+*.sqlite3
