@@ -267,7 +267,7 @@ GH_CLIENT_ID = get_from_env('GH_CLIENT_ID', '')
 GH_CLIENT_SECRET = get_from_env('GH_CLIENT_SECRET', '')
 
 # email server
-EMAIL_BACKEND = get_from_env('EMAIL_USE_AWS', EMAIL_BACKEND)
+EMAIL_BACKEND = get_from_env('EMAIL_USE_AWS', "django.core.mail.backends.smtp.EmailBackend")
 EMAIL_HOST = get_from_env('EMAIL_HOST', 'localhost')
 EMAIL_PORT = int(get_from_env('EMAIL_PORT', "2525"))
 EMAIL_HOST_USER = get_from_env('EMAIL_HOST_USER', '')
