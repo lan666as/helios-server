@@ -5,14 +5,12 @@ Yth. {{voter.name}},
 Sehubungan dengan dimulainya Pemilu Formatur KMTK FT UGM Periode 2023 pada 
 tanggal 26 sampai 28 September 2022, kami selaku panitia Pemilu Formatur telah 
 menyiapkan kredensial yang dapat digunakan untuk Pemilu sebagai berikut. 
-
 {% if voter.voter_type == "password" %}
 Username ID   : {{voter.voter_login_id}}
 password      : {{voter.voter_password}}
 {% else %}
 Log in dengan akun {{voter.voter_type}} Anda.
-{% endif %}
-Election URL  : {{election_vote_url}}
+{% endif %}Election URL  : {{election_vote_url}}
 {% if voter.vote_hash %}
 Kami telah mencatat surat suara Anda dengan ballot tracker:
 
@@ -21,8 +19,7 @@ Kami telah mencatat surat suara Anda dengan ballot tracker:
 Anda dapat melakukan pemungutan suara ulang; rekapitulasi akan menggunakan 
 surat suara yang terakhir.
 {% endif %}
-{% if election.use_voter_aliases %}
-Untuk melindungi privasi Anda, pemilihan ini dikonfigurasi untuk tidak pernah 
+{% if election.use_voter_aliases %}Untuk melindungi privasi Anda, pemilihan ini dikonfigurasi untuk tidak pernah 
 menampilkan ID login pemilih, nama, atau alamat email Anda kepada publik.
 Sebaliknya, ballot tracking center hanya akan menampilkan alias Anda.
 
@@ -31,7 +28,6 @@ Alias pemilih Anda adalah {{voter.alias}}.
 PENTING, ketika Anda diminta untuk masuk untuk memilih,
 harap gunakan *ID pemilih* Anda, bukan alias Anda.
 {% endif %}
-
 Untuk melaksanakan Pemilu yang LUBERJURDIL, diharapkan untuk tidak menyebarkan 
 username dan password yang telah diberikan.
 

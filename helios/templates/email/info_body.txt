@@ -1,6 +1,6 @@
-Dear {{voter.name}},
+Yth. {{voter.name}},
 
 {{custom_message|safe}}
 
---
-Helios
+Hormat kami,
+KPU Formatur KMTK FT UGM Periode 2023

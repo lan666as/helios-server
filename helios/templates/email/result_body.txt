@@ -17,7 +17,6 @@ Jika Anda yakin pelacak ini salah, silakan hubungi kami.
 Tampaknya Anda tidak memberikan suara dalam pemilihan ini.
 Silakan hubungi kami jika Anda yakin telah melakukannya.
 {% endif %}
-
 Terima kasih sudah mengikuti rangkaian acara Pemilu Formatur KMTK FT UGM Periode 2023. 
 
 Hormat kami,

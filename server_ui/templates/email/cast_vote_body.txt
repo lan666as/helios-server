@@ -14,6 +14,5 @@ dan surat suara Anda yang terenkripsi diarsipkan di:
 Pemilu ini menggunakan alias pemilih untuk melindungi privasi Anda. 
 Alias pemilih Anda adalah: {{voter.alias}}.
 {% endif %}
-
 Hormat kami,
 KPU Formatur KMTK FT UGM Periode 2023

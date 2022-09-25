@@ -1,14 +1,14 @@
-Dear {{voter.name}},
+Yth. {{voter.name}},
 
 {{custom_message|safe}}
 
 ========
-How to Vote
+Cara melakukan pemilihan
 
-Election URL:  {{election_vote_url}}
+Election URL  : {{election_vote_url}}
 {% if voter.voter_type == "password" %}
-Your voter ID: {{voter.voter_login_id}}
-Your password: {{voter.voter_password}}
+Username ID   : {{voter.voter_login_id}}
+password      : {{voter.voter_password}}
 {% else %}
-Log in with your {{voter.voter_type}} account.
+Log in dengan akun {{voter.voter_type}} Anda.
 {% endif %}
