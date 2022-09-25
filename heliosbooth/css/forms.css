@@ -66,3 +66,24 @@ table.pretty th, td {
 div.selected {
   background: lightblue;
 }
+
+div.answer-flex-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+}
+
+div.answer-checkbox-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.answer-img-checkbox-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}

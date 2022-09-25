@@ -24,22 +24,27 @@
 </span>
 </p>
 
+<div class="answer-flex-container">
 {#foreach $T.question.answers as answer}
-<div id="answer_label_{$T.question_num}_{$T.answer_ordering[$T.answer$index]}">
-  <input type="checkbox" class="ballot_answer" id="answer_{$T.question_num}_{$T.answer_ordering[$T.answer$index]}" name="answer_{$T.question_num}_{$T.answer_ordering[$T.answer$index]}" value="yes" onclick="BOOTH.click_checkbox({$T.question_num}, {$T.answer_ordering[$T.answer$index]}, this.checked);" />
+<div id="answer_label_{$T.question_num}_{$T.answer_ordering[$T.answer$index]}" class="answer-img-checkbox-label">
+  <img src="{$T.question.answer_urls[$T.answer_ordering[$T.answer$index]]}" height="300">
+  <div class="answer-checkbox-label">
+    <input type="checkbox" class="ballot_answer" id="answer_{$T.question_num}_{$T.answer_ordering[$T.answer$index]}" name="answer_{$T.question_num}_{$T.answer_ordering[$T.answer$index]}" value="yes" onclick="BOOTH.click_checkbox({$T.question_num}, {$T.answer_ordering[$T.answer$index]}, this.checked);" />
 
-  <label class="answer" for="answer_{$T.question_num}_{$T.answer_ordering[$T.answer$index]}">
-    {$T.question.answers[$T.answer_ordering[$T.answer$index]]}
+    <label class="answer" for="answer_{$T.question_num}_{$T.answer_ordering[$T.answer$index]}">
+      {$T.question.answers[$T.answer_ordering[$T.answer$index]]}
 
-    {#if $T.question.answer_urls && $T.question.answer_urls[$T.answer_ordering[$T.answer$index]] && $T.question.answer_urls[$T.answer_ordering[$T.answer$index]] != ""}
-      &nbsp;&nbsp;
-      <span style="font-size: 12pt;">
-        [<a target="_blank" href="{$T.question.answer_urls[$T.answer_ordering[$T.answer$index]]}" rel="noopener noreferrer">more info</a>]
-      </span>
-    {#/if}
-  </label>
+      {#if $T.question.answer_urls && $T.question.answer_urls[$T.answer_ordering[$T.answer$index]] && $T.question.answer_urls[$T.answer_ordering[$T.answer$index]] != ""}
+        &nbsp;&nbsp;
+        <span style="font-size: 12pt;">
+          <!-- [<a target="_blank" href="{$T.question.answer_urls[$T.answer_ordering[$T.answer$index]]}" rel="noopener noreferrer">more info</a>] -->
+        </span>
+      {#/if}
+    </label>
+  </div>
 </div>
 {#/for}
+</div>
 
 <div id="warning_box" style="color: green; text-align:center; font-size: 0.8em; padding-top:10px; padding-bottom: 10px; height:50px;">
 </div>
