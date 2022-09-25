@@ -87,3 +87,10 @@ div.answer-img-checkbox-label {
     align-items: center;
     align-content: center;
 }
+
+form.prettyform label.flex-center  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
