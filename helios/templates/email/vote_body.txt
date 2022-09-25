@@ -17,8 +17,7 @@ Kami telah mencatat surat suara Anda dengan ballot tracker:
   {{voter.vote_hash}}
 
 Anda dapat melakukan pemungutan suara ulang; rekapitulasi akan menggunakan 
-surat suara yang terakhir.
-{% endif %}
+surat suara yang terakhir.{% endif %}
 {% if election.use_voter_aliases %}Untuk melindungi privasi Anda, pemilihan ini dikonfigurasi untuk tidak pernah 
 menampilkan ID login pemilih, nama, atau alamat email Anda kepada publik.
 Sebaliknya, ballot tracking center hanya akan menampilkan alias Anda.
@@ -26,7 +25,7 @@ Sebaliknya, ballot tracking center hanya akan menampilkan alias Anda.
 Alias pemilih Anda adalah {{voter.alias}}.
 
 PENTING, ketika Anda diminta untuk masuk untuk memilih,
-harap gunakan *ID pemilih* Anda, bukan alias Anda.
+harap gunakan *Username/ID pemilih* Anda, bukan alias Anda.
 {% endif %}
 Untuk melaksanakan Pemilu yang LUBERJURDIL, diharapkan untuk tidak menyebarkan 
 username dan password yang telah diberikan.
