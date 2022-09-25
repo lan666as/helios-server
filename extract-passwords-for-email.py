@@ -25,4 +25,5 @@ voters = Election.objects.get(uuid=election_uuid).voter_set.filter(voter_email=e
 
 for voter in voters:
     csv_output.writerow([voter.voter_login_id, voter.voter_password])
+    print(f"{voter.voter_login_id}\t{voter.voter_password}")
 

@@ -1011,7 +1011,7 @@ class Voter(HeliosModel):
   def can_update_status(self):
     return self.get_user().can_update_status()
 
-  def generate_password(self, length=10):
+  def generate_password(self, length=6):
     if self.voter_password:
       raise Exception("password already exists")
     

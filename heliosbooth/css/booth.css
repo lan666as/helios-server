@@ -34,6 +34,7 @@ body {
   padding: 0;
   margin: 0;
   line-height: 120%;
+  color: #04383F;
 }
 
 #header h2 {
@@ -48,8 +49,9 @@ body {
   display: flex;
   padding: 5px 0;
   text-align: center;
-  background: #ccc;
+  background: #318F9A;
   font-size: 18pt;
+  color: #fff;
 }
 
 #progress_div {
@@ -66,8 +68,8 @@ body {
 }
 
 #progress_div td.unselected {
-  background: #ccc;
-  color: #888;
+  background: #318F9A;
+  color: #ccc;
   border: 1px solid #333;
 }
 
