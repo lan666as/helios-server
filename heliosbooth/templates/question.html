@@ -34,10 +34,12 @@
     <input type="checkbox" class="ballot_answer" id="answer_{$T.question_num}_{$T.answer_ordering[$T.answer$index]}" name="answer_{$T.question_num}_{$T.answer_ordering[$T.answer$index]}" value="yes" onclick="BOOTH.click_checkbox({$T.question_num}, {$T.answer_ordering[$T.answer$index]}, this.checked);" />
 
     <label class="answer" for="answer_{$T.question_num}_{$T.answer_ordering[$T.answer$index]}">
+      <span style="font-size: 0.75em;">
       {$T.question.answers[$T.answer_ordering[$T.answer$index]]}
 
       {#if $T.question.answer_urls && $T.question.answer_urls[$T.answer_ordering[$T.answer$index]] && $T.question.answer_urls[$T.answer_ordering[$T.answer$index]] != ""}
         &nbsp;&nbsp;
+      </span>
         <span style="font-size: 12pt;">
           <!-- [<a target="_blank" href="{$T.question.answer_urls[$T.answer_ordering[$T.answer$index]]}" rel="noopener noreferrer">more info</a>] -->
         </span>
