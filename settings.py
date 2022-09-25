@@ -20,8 +20,9 @@ DEBUG = (get_from_env('DEBUG', '1') == '1')
 #    ('Ben Adida', 'ben@adida.net'),
 # if you want to be emailed about errors.
 admin_email = get_from_env('ADMIN_EMAIL', None)
+admin_email_2 = get_from_env('ADMIN_EMAIL_2', None)
 if admin_email:
-    ADMINS = [(get_from_env('ADMIN_NAME', ''), admin_email)]
+    ADMINS = [(get_from_env('ADMIN_NAME', ''), admin_email), (get_from_env('ADMIN_NAME_2', ''), admin_email_2)]
 else:
     ADMINS = []
 
