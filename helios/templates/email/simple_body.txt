@@ -5,10 +5,9 @@ Yth. {{voter.name}},
 ========
 Cara melakukan pemilihan
 
-Election URL  : {{election_vote_url}}
 {% if voter.voter_type == "password" %}
-Username ID   : {{voter.voter_login_id}}
-password      : {{voter.voter_password}}
+Username : {{voter.voter_login_id}}
+Password : {{voter.voter_password}}
 {% else %}
 Log in dengan akun {{voter.voter_type}} Anda.
 {% endif %}
