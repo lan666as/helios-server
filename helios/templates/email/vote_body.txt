@@ -18,7 +18,8 @@ Kami telah mencatat surat suara Anda dengan ballot tracker:
 
   {{voter.vote_hash}}
 
-Anda dapat melakukan pemungutan suara ulang; rekapitulasi akan menggunakan surat suara yang terakhir.
+Anda dapat melakukan pemungutan suara ulang; rekapitulasi akan menggunakan 
+surat suara yang terakhir.
 {% endif %}
 {% if election.use_voter_aliases %}
 Untuk melindungi privasi Anda, pemilihan ini dikonfigurasi untuk tidak pernah 
@@ -31,10 +32,14 @@ PENTING, ketika Anda diminta untuk masuk untuk memilih,
 harap gunakan *ID pemilih* Anda, bukan alias Anda.
 {% endif %}
 
-Untuk melaksanakan Pemilu yang LUBERJURDIL, diharapkan untuk tidak menyebarkan username dan password yang telah diberikan.
-Pemilu akan dilaksanakan di Taman Equic mulai dari jam 13:00 sampai 16:00. Kami harap saudara/I dapat memberikan suara pada Pemilu Formatur KMTK FT UGM Periode 2023.
+Untuk melaksanakan Pemilu yang LUBERJURDIL, diharapkan untuk tidak menyebarkan 
+username dan password yang telah diberikan.
 
-Anda mungkin ingin memverifikasi sidik jari pemilihan di bagian bawah
+Pemilu akan dilaksanakan di Taman Equic mulai dari jam 13:00 sampai 16:00. 
+Kami harap saudara/i dapat memberikan suara pada 
+Pemilu Formatur KMTK FT UGM Periode 2023.
+
+Anda mungkin ingin memverifikasi fingerprint pemilihan di bagian bawah
 layar saat Anda memilih: {{voter.election.hash}}
 
 Hormat kami,
