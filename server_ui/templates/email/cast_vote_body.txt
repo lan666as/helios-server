@@ -9,7 +9,6 @@ Pelacak surat suara Anda adalah:
 
 dan surat suara Anda yang terenkripsi diarsipkan di:
 {{cast_vote_url}}
-
 {% if election.use_voter_aliases %}
 Pemilu ini menggunakan alias pemilih untuk melindungi privasi Anda. 
 Alias pemilih Anda adalah: {{voter.alias}}.
