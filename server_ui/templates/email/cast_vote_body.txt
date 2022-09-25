@@ -1,17 +1,19 @@
-Dear {{voter.name}},
+[Suara Suara Masuk]
 
-You have successfully cast a vote in {{election.name}}.
+Yth. {{voter.name}},
 
-Your ballot tracker is:
+Suara Anda telah masuk dalam {{election.name}}.
+
+Pelacak surat suara Anda adalah:
 {{cast_vote.vote_hash}}
 
-And your full encrypted ballot is archived at:
+dan surat suara Anda yang terenkripsi diarsipkan di:
 {{cast_vote_url}}
 
 {% if election.use_voter_aliases %}
-This election uses voter aliases to protect your privacy.
-Your voter alias is: {{voter.alias}}.
+Pemilu ini menggunakan alias pemilih untuk melindungi privasi Anda. 
+Alias pemilih Anda adalah: {{voter.alias}}.
 {% endif %}
 
---
-Helios
+Hormat kami,
+KPU Formatur KMTK FT UGM Periode 2023

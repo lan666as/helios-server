@@ -1,34 +1,41 @@
-Dear {{voter.name}},
+Yth. {{voter.name}},
 
 {{custom_message|safe}}
 
-Election URL (click to begin voting):
-{{election_vote_url}}
+Sehubungan dengan dimulainya Pemilu Formatur KMTK FT UGM Periode 2023 pada 
+tanggal 26 sampai 28 September 2022, kami selaku panitia Pemilu Formatur telah 
+menyiapkan kredensial yang dapat digunakan untuk Pemilu sebagai berikut. 
 
 {% if voter.voter_type == "password" %}
-Your voter ID: {{voter.voter_login_id}}
-Your password: {{voter.voter_password}}
+Username ID   : {{voter.voter_login_id}}
+password      : {{voter.voter_password}}
 {% else %}
-Log in with your {{voter.voter_type}} account.
-{% endif %}{% if voter.vote_hash %}
-We have recorded your vote with ballot tracker:
+Log in dengan akun {{voter.voter_type}} Anda.
+{% endif %}
+Election URL  : {{election_vote_url}}
+{% if voter.vote_hash %}
+Kami telah mencatat surat suara Anda dengan ballot tracker:
 
   {{voter.vote_hash}}
 
-You may re-vote if you wish: only your last vote counts.
-{% endif %}{% if election.use_voter_aliases %}
-In order to protect your privacy, this election is configured
-to never display your voter login ID, name, or email address to the public.
-Instead, the ballot tracking center will only display your alias.
+Anda dapat melakukan pemungutan suara ulang; rekapitulasi akan menggunakan surat suara yang terakhir.
+{% endif %}
+{% if election.use_voter_aliases %}
+Untuk melindungi privasi Anda, pemilihan ini dikonfigurasi untuk tidak pernah 
+menampilkan ID login pemilih, nama, atau alamat email Anda kepada publik.
+Sebaliknya, ballot tracking center hanya akan menampilkan alias Anda.
 
-Your voter alias is {{voter.alias}}.
+Alias pemilih Anda adalah {{voter.alias}}.
 
-IMPORTANTLY, when you are prompted to log in to vote,
-please use your *voter ID*, not your alias.
+PENTING, ketika Anda diminta untuk masuk untuk memilih,
+harap gunakan *ID pemilih* Anda, bukan alias Anda.
 {% endif %}
 
-You may wish to verify the election fingerprint at the bottom of
-the screen when you vote:  {{voter.election.hash}}
+Untuk melaksanakan Pemilu yang LUBERJURDIL, diharapkan untuk tidak menyebarkan username dan password yang telah diberikan.
+Pemilu akan dilaksanakan di Taman Equic mulai dari jam 13:00 sampai 16:00. Kami harap saudara/I dapat memberikan suara pada Pemilu Formatur KMTK FT UGM Periode 2023.
 
---
-Helios
+Anda mungkin ingin memverifikasi sidik jari pemilihan di bagian bawah
+layar saat Anda memilih: {{voter.election.hash}}
+
+Hormat kami,
+KPU Formatur KMTK FT UGM Periode 2023
