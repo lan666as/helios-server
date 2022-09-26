@@ -7,6 +7,7 @@ ben@adida.net
 import copy
 from celery import shared_task
 from celery.utils.log import get_logger
+from smtplib import SMTPServerDisconnected
 
 from . import signals
 from .models import CastVote, Election, Voter, VoterFile
@@ -60,7 +61,7 @@ def voters_notify(election_id, notification_template, extra_vars={}):
         single_voter_notify.delay(voter.uuid, notification_template, extra_vars)
 
 
-@shared_task(autoretry_for=(Exception,), retry_backoff=True, retry_jitter=True, retry_kwargs={'max_retries': None,})
+@shared_task(autoretry_for=(Exception, SMTPServerDisconnected), retry_backoff=10, retry_jitter=True, retry_kwargs={'max_retries': None,})
 def single_voter_email(voter_uuid, subject_template, body_template, extra_vars={}):
     voter = Voter.objects.get(uuid=voter_uuid)
 
