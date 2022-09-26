@@ -37,7 +37,7 @@ def cast_vote_verify_and_store(cast_vote_id, status_update_message=None, **kwarg
         logger.error("Failed to verify and store %d" % cast_vote_id)
 
 
-@shared_task(autoretry_for=(Exception, SMTPServerDisconnected), retry_backoff=10, retry_jitter=True, retry_kwargs={'max_retries': None,})
+@shared_task(autoretry_for=(Exception), retry_backoff=10, retry_jitter=True, retry_kwargs={'max_retries': None,})
 def voters_email(election_id, subject_template, body_template, extra_vars={},
                  voter_constraints_include=None, voter_constraints_exclude=None):
     """
@@ -79,9 +79,12 @@ def voters_email(election_id, subject_template, body_template, extra_vars={},
 
     MAIL_CHUNK_SIZE = 70
     for i in range(0, len(_msgtuple), MAIL_CHUNK_SIZE):
-        send_mass_mail(tuple(_msgtuple[i:i+MAIL_CHUNK_SIZE]), fail_silently=False)
+        mass_mail_voters.delay(tuple(_msgtuple[i:i+MAIL_CHUNK_SIZE]))
         time.sleep(90)
 
+@shared_task(autoretry_for=(Exception), retry_backoff=10, retry_jitter=True, retry_kwargs={'max_retries': None,})
+def mass_mail_voters(msgtuple):
+    send_mass_mail(msgtuple, fail_silently=False)
 
 
 @shared_task
@@ -91,7 +94,7 @@ def voters_notify(election_id, notification_template, extra_vars={}):
         single_voter_notify.delay(voter.uuid, notification_template, extra_vars)
 
 
-@shared_task(autoretry_for=(Exception, SMTPServerDisconnected), retry_backoff=10, retry_jitter=True, retry_kwargs={'max_retries': None,})
+@shared_task(autoretry_for=(Exception), retry_backoff=10, retry_jitter=True, retry_kwargs={'max_retries': None,})
 def single_voter_email(voter_uuid, subject_template, body_template, extra_vars={}):
     voter = Voter.objects.get(uuid=voter_uuid)
 
