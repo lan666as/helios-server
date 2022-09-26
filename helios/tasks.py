@@ -8,6 +8,8 @@ import copy
 from celery import shared_task
 from celery.utils.log import get_logger
 from smtplib import SMTPServerDisconnected
+from django.core.mail import send_mass_mail
+from django.conf import settings
 
 from . import signals
 from .models import CastVote, Election, Voter, VoterFile
@@ -34,7 +36,7 @@ def cast_vote_verify_and_store(cast_vote_id, status_update_message=None, **kwarg
         logger.error("Failed to verify and store %d" % cast_vote_id)
 
 
-@shared_task
+@shared_task(autoretry_for=(Exception, SMTPServerDisconnected), retry_backoff=10, retry_jitter=True, retry_kwargs={'max_retries': None,})
 def voters_email(election_id, subject_template, body_template, extra_vars={},
                  voter_constraints_include=None, voter_constraints_exclude=None):
     """
@@ -49,9 +51,32 @@ def voters_email(election_id, subject_template, body_template, extra_vars={},
         voters = voters.filter(**voter_constraints_include)
     if voter_constraints_exclude:
         voters = voters.exclude(**voter_constraints_exclude)
+    
+    _msgtuple = []
+    for _voter in voters:
+        # single_voter_email.delay(voter.uuid, subject_template, body_template, extra_vars)
+        voter = Voter.objects.get(uuid=_voter.uuid)
 
-    for voter in voters:
-        single_voter_email.delay(voter.uuid, subject_template, body_template, extra_vars)
+        the_vars = copy.copy(extra_vars)
+        the_vars.update({'election': voter.election})
+        the_vars.update({'voter': voter})
+
+        subject = render_template_raw(None, subject_template, the_vars)
+        subject = subject.split("\n")[0]
+        body = render_template_raw(None, body_template, the_vars)
+        email = voter.voter_email
+        name = voter.voter_name
+
+        _msgtuple.append(
+            (
+                subject,
+                body,
+                settings.SERVER_EMAIL,
+                ["\"%s\" <%s>" % (name, email)]
+            )
+        )
+
+    send_mass_mail(tuple(_msgtuple), fail_silently=False)
 
 
 @shared_task
