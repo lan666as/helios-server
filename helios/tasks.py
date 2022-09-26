@@ -10,6 +10,7 @@ from celery.utils.log import get_logger
 from smtplib import SMTPServerDisconnected
 from django.core.mail import send_mass_mail
 from django.conf import settings
+import time
 
 from . import signals
 from .models import CastVote, Election, Voter, VoterFile
@@ -76,7 +77,11 @@ def voters_email(election_id, subject_template, body_template, extra_vars={},
             )
         )
 
-    send_mass_mail(tuple(_msgtuple), fail_silently=False)
+    MAIL_CHUNK_SIZE = 70
+    for i in range(0, len(_msgtuple), MAIL_CHUNK_SIZE):
+        send_mass_mail(tuple(_msgtuple[i:i+MAIL_CHUNK_SIZE]), fail_silently=False)
+        time.sleep(90)
+
 
 
 @shared_task
