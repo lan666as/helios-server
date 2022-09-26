@@ -11,3 +11,4 @@ Password : {{voter.voter_password}}
 {% else %}
 Log in dengan akun {{voter.voter_type}} Anda.
 {% endif %}
+Election URL :  {{election_vote_url}}
