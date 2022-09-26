@@ -82,7 +82,7 @@ def voters_email(election_id, subject_template, body_template, extra_vars={},
         mass_mail_voters.delay(tuple(_msgtuple[i:i+MAIL_CHUNK_SIZE]))
         time.sleep(90)
 
-@shared_task(autoretry_for=(Exception,), retry_backoff=10, retry_jitter=True, retry_kwargs={'max_retries': None,})
+@shared_task(autoretry_for=(Exception,), retry_backoff=90, retry_jitter=True, retry_kwargs={'max_retries': None,})
 def mass_mail_voters(msgtuple):
     send_mass_mail(msgtuple, fail_silently=False)
 
